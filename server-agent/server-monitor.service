@@ -1,0 +1,31 @@
+[Unit]
+Description=Server Monitor Agent (JSON metrics for ESP32 OLED)
+Documentation=https://github.com/your/esp32-server-monitor
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# 按实际路径与密钥修改下面两行
+ExecStart=/usr/bin/python3 /opt/server-monitor/server_monitor_agent.py --port 8787 --token CHANGE_ME
+Restart=always
+RestartSec=5
+User=monitor
+Group=monitor
+WorkingDirectory=/opt/server-monitor
+
+# --- 安全加固（不需要写入权限）---
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictSUIDSGID=yes
+LockPersonality=yes
+MemoryMax=64M
+TasksMax=32
+
+[Install]
+WantedBy=multi-user.target

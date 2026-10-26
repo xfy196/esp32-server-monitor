@@ -1,0 +1,5 @@
+; 只忽略本地密钥与编译产物
+src/secrets.h
+.pio/
+.pioenvs/
+.vscode/

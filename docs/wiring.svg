@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="680" viewBox="0 0 1000 680"
+     font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei','Segoe UI',sans-serif">
+
+  <!-- 背景 -->
+  <rect width="1000" height="680" fill="#f4f6fb"/>
+  <circle cx="930" cy="70" r="120" fill="#e8edfb" opacity="0.7"/>
+  <circle cx="60" cy="600" r="90" fill="#e8edfb" opacity="0.5"/>
+
+  <!-- 标题 -->
+  <text x="72" y="58" font-size="27" font-weight="700" fill="#0f172a">ESP32 服务器监控屏 · 接线图</text>
+  <text x="72" y="84" font-size="14" fill="#64748b">0.96″ OLED（SSD1306 128×64）· I2C 接口 · 4 根杜邦线</text>
+
+  <rect x="790" y="38" width="138" height="32" rx="16" fill="#eef2ff" stroke="#c7d2fe"/>
+  <text x="859" y="59" font-size="12" font-weight="600" fill="#4338ca" text-anchor="middle">I2C · 3.3V · 4 线</text>
+
+  <!-- ==================== ESP32 ==================== -->
+  <rect x="72" y="116" width="268" height="352" rx="18" fill="#1f2937" stroke="#0b1220" stroke-width="1.5"/>
+  <rect x="82" y="126" width="248" height="332" rx="12" fill="none" stroke="#334155" stroke-width="1"/>
+
+  <text x="96" y="154" font-size="22" font-weight="700" fill="#f8fafc">ESP32</text>
+  <text x="96" y="174" font-size="11" fill="#94a3b8">DevKit V1 · WROOM-32</text>
+
+  <!-- USB 接口 -->
+  <rect x="52" y="196" width="22" height="58" rx="5" fill="#94a3b8" stroke="#64748b"/>
+  <rect x="57" y="212" width="12" height="26" rx="2" fill="#475569"/>
+  <text x="20" y="286" font-size="9" fill="#94a3b8">USB</text>
+  <text x="20" y="298" font-size="9" fill="#94a3b8">5V</text>
+
+  <!-- 电源指示灯 -->
+  <circle cx="300" cy="196" r="4" fill="#22c55e"/>
+  <circle cx="300" cy="196" r="7" fill="#22c55e" opacity="0.25"/>
+
+  <!-- 引脚 -->
+  <g>
+    <!-- 3V3 -->
+    <rect x="326" y="199" width="26" height="22" rx="4" fill="#fbbf24" stroke="#b45309"/>
+    <circle cx="339" cy="210" r="3.2" fill="#111827"/>
+    <text x="312" y="214.5" font-size="13" fill="#e5e7eb" text-anchor="end">3V3</text>
+
+    <!-- GND -->
+    <rect x="326" y="269" width="26" height="22" rx="4" fill="#fbbf24" stroke="#b45309"/>
+    <circle cx="339" cy="280" r="3.2" fill="#111827"/>
+    <text x="312" y="284.5" font-size="13" fill="#e5e7eb" text-anchor="end">GND</text>
+
+    <!-- GPIO21 -->
+    <rect x="326" y="339" width="26" height="22" rx="4" fill="#fbbf24" stroke="#b45309"/>
+    <circle cx="339" cy="350" r="3.2" fill="#111827"/>
+    <text x="312" y="354.5" font-size="13" fill="#e5e7eb" text-anchor="end">GPIO21</text>
+
+    <!-- GPIO22 -->
+    <rect x="326" y="409" width="26" height="22" rx="4" fill="#fbbf24" stroke="#b45309"/>
+    <circle cx="339" cy="420" r="3.2" fill="#111827"/>
+    <text x="312" y="424.5" font-size="13" fill="#e5e7eb" text-anchor="end">GPIO22</text>
+  </g>
+
+  <text x="96" y="452" font-size="10" fill="#64748b">BOOT 键 = GPIO0（翻页）</text>
+
+  <!-- ==================== OLED ==================== -->
+  <rect x="660" y="116" width="300" height="352" rx="18" fill="#0b1220" stroke="#1e293b" stroke-width="1.5"/>
+
+  <text x="684" y="152" font-size="18" font-weight="700" fill="#f8fafc">OLED</text>
+  <text x="684" y="170" font-size="10" fill="#94a3b8">SSD1306 · 128×64 · I2C</text>
+
+  <!-- 屏幕预览 -->
+  <rect x="756" y="198" width="176" height="88" rx="3" fill="#060b18" stroke="#334155"/>
+  <g font-family="Menlo,Consolas,monospace" fill="#cbd5e1">
+    <text x="764" y="212" font-size="8">srv1</text>
+    <g fill="none" stroke="#475569" stroke-width="1">
+      <rect x="764" y="238" width="156" height="7"/>
+      <rect x="764" y="262" width="156" height="7"/>
+    </g>
+    <rect x="764" y="238" width="66" height="7" fill="#e2e8f0"/>
+    <rect x="764" y="262" width="87" height="7" fill="#e2e8f0"/>
+    <text x="764" y="232" font-size="7.5">CPU 42.5%</text>
+    <text x="764" y="256" font-size="7.5">MEM 56.1%</text>
+    <text x="764" y="280" font-size="7.5">4.5 / 8.0 GB</text>
+    <g fill="#94a3b8">
+      <rect x="896" y="204" width="3" height="8"/>
+      <rect x="902" y="202" width="3" height="10"/>
+      <rect x="908" y="200" width="3" height="12"/>
+      <rect x="914" y="198" width="3" height="14"/>
+    </g>
+  </g>
+  <text x="756" y="304" font-size="9" fill="#64748b">I2C 地址 0x3C（少数模块 0x3D）</text>
+
+  <!-- OLED 引脚 -->
+  <g>
+    <!-- VCC -->
+    <rect x="648" y="199" width="26" height="22" rx="4" fill="#fbbf24" stroke="#b45309"/>
+    <circle cx="661" cy="210" r="3.2" fill="#0b1220"/>
+    <text x="686" y="214.5" font-size="13" fill="#e5e7eb">VCC</text>
+
+    <!-- GND -->
+    <rect x="648" y="269" width="26" height="22" rx="4" fill="#fbbf24" stroke="#b45309"/>
+    <circle cx="661" cy="280" r="3.2" fill="#0b1220"/>
+    <text x="686" y="284.5" font-size="13" fill="#e5e7eb">GND</text>
+
+    <!-- SDA -->
+    <rect x="648" y="339" width="26" height="22" rx="4" fill="#fbbf24" stroke="#b45309"/>
+    <circle cx="661" cy="350" r="3.2" fill="#0b1220"/>
+    <text x="686" y="354.5" font-size="13" fill="#e5e7eb">SDA</text>
+
+    <!-- SCL -->
+    <rect x="648" y="409" width="26" height="22" rx="4" fill="#fbbf24" stroke="#b45309"/>
+    <circle cx="661" cy="420" r="3.2" fill="#0b1220"/>
+    <text x="686" y="424.5" font-size="13" fill="#e5e7eb">SCL</text>
+  </g>
+
+  <!-- ==================== 连线 ==================== -->
+  <g stroke-linecap="round">
+    <line x1="352" y1="210" x2="648" y2="210" stroke="#ef4444" stroke-width="4"/>
+    <line x1="352" y1="280" x2="648" y2="280" stroke="#334155" stroke-width="4"/>
+    <line x1="352" y1="350" x2="648" y2="350" stroke="#3b82f6" stroke-width="4"/>
+    <line x1="352" y1="420" x2="648" y2="420" stroke="#f59e0b" stroke-width="4"/>
+  </g>
+
+  <!-- 线缆标签 -->
+  <g font-size="11.5" font-weight="600" fill="#334155" text-anchor="middle">
+    <rect x="456" y="199" width="88" height="22" rx="11" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="500" y="214.5">3.3V → VCC</text>
+
+    <rect x="472" y="269" width="56" height="22" rx="11" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="500" y="284.5">GND</text>
+
+    <rect x="461" y="339" width="78" height="22" rx="11" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="500" y="354.5">SDA · 21</text>
+
+    <rect x="461" y="409" width="78" height="22" rx="11" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="500" y="424.5">SCL · 22</text>
+  </g>
+
+  <!-- 杜邦线小圆点 -->
+  <g fill="#ffffff">
+    <circle cx="356" cy="210" r="2.6"/>
+    <circle cx="356" cy="280" r="2.6"/>
+    <circle cx="356" cy="350" r="2.6"/>
+    <circle cx="356" cy="420" r="2.6"/>
+  </g>
+
+  <!-- ==================== 备注 ==================== -->
+  <rect x="72" y="492" width="888" height="150" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="96" y="510" width="3" height="15" rx="1.5" fill="#3b82f6"/>
+  <text x="108" y="523" font-size="14" font-weight="700" fill="#0f172a">接线要点</text>
+
+  <g font-size="12.5" fill="#475569">
+    <g fill="#94a3b8">
+      <circle cx="103" cy="549" r="2.4"/>
+      <circle cx="103" cy="575" r="2.4"/>
+      <circle cx="103" cy="601" r="2.4"/>
+      <circle cx="103" cy="627" r="2.4"/>
+    </g>
+    <text x="116" y="553">VCC 接 3V3（3.3V），GND 接 GND；不要接 5V，也不要反接电源</text>
+    <text x="116" y="579">SDA 接 GPIO21，SCL 接 GPIO22；接反不会烧板，但屏幕不会亮</text>
+    <text x="116" y="605">I2C 地址通常是 0x3C，少数模块为 0x3D（改 config.h 中的 OLED_I2C_ADDR）</text>
+    <text x="116" y="631">板载 BOOT 键对应 GPIO0，用于手动翻页，无需额外接线</text>
+  </g>
+
+  <!-- 页脚 -->
+  <text x="72" y="668" font-size="10" fill="#94a3b8">断电后接线 · 上电前复查 VCC / GND</text>
+  <text x="960" y="668" font-size="10" fill="#94a3b8" text-anchor="end">ESP32 Server Monitor · v1.0</text>
+</svg>
