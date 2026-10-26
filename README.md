@@ -26,7 +26,7 @@ CPU、内存、磁盘、网速、负载、温度和在线状态。
 
 | 数量 | 物料 | 说明 |
 |:---:|------|------|
-| 1 | ESP32 开发板 | DevKit V1 / WROOM-32（30 针、38 针都行），带 USB 线 |
+| 1 | ESP32 开发板 | DevKit V1 / WROOM-32（30 针、38 针都行），或 **ESP32-C3 SuperMini**（接线见 2.1） |
 | 1 | 0.96″ OLED 模块 | **SSD1306** 驱动，128×64，**I2C 4 针**（VCC/GND/SDA/SCL） |
 | 4 | 杜邦线 | 母对母，建议 ≤ 20 cm |
 
@@ -53,6 +53,38 @@ CPU、内存、磁盘、网速、负载、温度和在线状态。
 3. 线太长（> 30 cm）容易出现花屏、随机重启，尽量短。
 4. 接好后先跑一遍 [`docs/i2c_scan`](docs/i2c_scan/i2c_scan.ino)：串口打印
    `found device at 0x3C` 就说明屏和线都没问题。
+
+### 2.1 换成 ESP32-C3 SuperMini
+
+板子只有 22×18 mm，但**引脚和 WROOM-32 完全不通用**，上面那张表不能照抄。
+
+![C3 接线图](docs/wiring-c3.svg)
+
+| OLED 引脚 | C3 引脚 | 线色（图中） | 说明 |
+|:---:|:---:|:---:|------|
+| VCC | **3V3** | 红 | 3.3V 供电，别接 5V |
+| GND | **GND** | 黑 | 共地 |
+| SDA | **IO4** | 蓝 | I2C 数据 |
+| SCL | **IO5** | 黄 | I2C 时钟 |
+
+三个必须知道的坑：
+
+1. **别用 IO8 / IO9 跑 I2C。** 这两脚是 Arduino `Wire` 的默认引脚，但在 SuperMini 上
+   IO8 接着板载 LED、IO9 就是 BOOT 按钮，而且两个都是 strapping 脚（复位时必须为高）。
+   真接上去，每次按 BOOT 翻页都会把 SCL 短路到地。
+2. **C3 上没有 GPIO21 / GPIO22。** 那两个位置是 UART 的 TX / RX，接上去屏幕不会亮。
+3. **IO18 / IO19 是原生 USB，IO20 / IO21 是串口，IO2 也是 strapping**，都别占用。
+
+固件不用改：`config.h` 检测到 C3 会自动切到 `SDA=4 / SCL=5 / BOOT=9`，编译时选 C3 环境即可。
+
+```bash
+cd firmware
+pio run -e esp32c3 -t upload
+pio device monitor
+```
+
+> 板子走原生 USB-C，没有 CH340 芯片。PlatformIO 里已经打开 `ARDUINO_USB_CDC_ON_BOOT`，
+> 插上就能看串口日志；如果 `pio device monitor` 没输出，先确认用的是**能传数据**的 USB-C 线。
 
 ---
 
@@ -151,14 +183,15 @@ macOS 上同样能跑（真实模式需要 `/proc`，只有 Linux 有）。
 ```bash
 cd firmware
 # 1) 改 src/secrets.h：WiFi、服务器地址、token
-pio run                 # 编译
-pio run -t upload       # 烧录
-pio device monitor      # 串口日志 115200
+pio run -t upload              # DevKit V1 / WROOM-32
+pio run -e esp32c3 -t upload   # ESP32-C3 SuperMini
+pio device monitor             # 串口日志 115200
 ```
 
 ### 4.2 用 Arduino IDE
 
-1. 开发板选择 **ESP32 Dev Module**（需要先装 esp32 支持包）。
+1. 开发板选择 **ESP32 Dev Module**；用 C3 SuperMini 则选 **ESP32C3 Dev Module**
+   （需要先装 esp32 支持包）。
 2. 库管理器安装：
    * `Adafruit SSD1306`
    * `Adafruit GFX Library`
@@ -180,7 +213,8 @@ pio device monitor      # 串口日志 115200
 
 | 宏 | 默认 | 说明 |
 |---|---|---|
-| `PIN_I2C_SDA` / `PIN_I2C_SCL` | 21 / 22 | I2C 引脚 |
+| `PIN_I2C_SDA` / `PIN_I2C_SCL` | 21 / 22 | I2C 引脚；**C3 自动为 4 / 5** |
+| `PIN_BUTTON` | 0 | 板载 BOOT 键；**C3 自动为 9** |
 | `OLED_I2C_ADDR` | 0x3C | 屏幕不亮可试 0x3D |
 | `FETCH_INTERVAL_MS` | 5000 | 拉数据间隔 |
 | `PAGE_INTERVAL_MS` | 7000 | 自动翻页间隔 |
@@ -298,7 +332,8 @@ API                    12 ms
 esp32-server-monitor/
 ├── README.md
 ├── docs/
-│   ├── wiring.svg              # 接线图
+│   ├── wiring.svg              # 接线图（WROOM-32）
+│   ├── wiring-c3.svg           # 接线图（ESP32-C3 SuperMini）
 │   ├── screens.svg             # 界面预览
 │   └── i2c_scan/i2c_scan.ino   # I2C 地址扫描（排障用）
 ├── firmware/

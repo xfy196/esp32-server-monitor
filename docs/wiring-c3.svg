@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="1140" viewBox="0 0 680 570"
+     font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei','Segoe UI',sans-serif">
+
+  <!-- 背景 -->
+  <rect width="680" height="570" fill="#f5f7fb"/>
+  <circle cx="646" cy="34" r="86" fill="#e4ebfa" opacity="0.55"/>
+  <circle cx="26" cy="500" r="64" fill="#e4ebfa" opacity="0.4"/>
+
+  <!-- 标题 -->
+  <text x="40" y="45" font-size="22" font-weight="700" fill="#0f172a">ESP32-C3 SuperMini · OLED 接线</text>
+  <text x="40" y="67" font-size="11.5" fill="#64748b">0.96″ SSD1306 128×64 · I2C 四线 · 3.3V 供电 · 杜邦线 ≤ 20 cm</text>
+
+  <rect x="500" y="26" width="140" height="26" rx="13" fill="#eef2ff" stroke="#c7d2fe"/>
+  <text x="570" y="43" font-size="10.5" font-weight="600" fill="#4338ca" text-anchor="middle">I2C · 0x3C · 4 根线</text>
+
+  <!-- ==================== ESP32-C3 SuperMini ==================== -->
+  <rect x="40" y="92" width="206" height="286" rx="15" fill="#1e293b" stroke="#0b1220" stroke-width="1.2"/>
+  <rect x="48" y="100" width="190" height="270" rx="10" fill="none" stroke="#334155"/>
+
+  <text x="60" y="128" font-size="16" font-weight="700" fill="#f8fafc">ESP32-C3</text>
+  <text x="60" y="145" font-size="9.5" fill="#94a3b8">SuperMini · RISC-V · USB-C</text>
+
+  <!-- USB-C -->
+  <rect x="22" y="116" width="17" height="46" rx="4" fill="#94a3b8" stroke="#64748b"/>
+  <rect x="26" y="128" width="9" height="22" rx="2" fill="#475569"/>
+  <text x="8" y="177" font-size="7.5" fill="#94a3b8">USB-C</text>
+
+  <!-- 电源灯 -->
+  <circle cx="216" cy="122" r="3.4" fill="#22c55e"/>
+  <circle cx="216" cy="122" r="6.4" fill="#22c55e" opacity="0.22"/>
+
+  <!-- 芯片体 -->
+  <rect x="94" y="226" width="58" height="58" rx="5" fill="#243144" stroke="#3b4a63"/>
+  <rect x="106" y="238" width="34" height="34" rx="2" fill="#1b2534"/>
+  <text x="123" y="260" font-size="9" font-weight="700" fill="#4d5d78" text-anchor="middle">C3</text>
+
+  <text x="60" y="176" font-size="8.5" fill="#64748b">只画了用到的 4 个脚</text>
+  <text x="60" y="190" font-size="8.5" fill="#64748b">另一侧还有 8 个引脚</text>
+
+  <!-- BOOT 键 -->
+  <rect x="88" y="316" width="38" height="14" rx="3.5" fill="#334155" stroke="#475569"/>
+  <text x="107" y="326" font-size="6.5" font-weight="600" fill="#cbd5e1" text-anchor="middle">BOOT</text>
+  <text x="132" y="326" font-size="7" fill="#94a3b8">= IO9 · 翻页键</text>
+
+  <!-- 引脚（右缘） -->
+  <g>
+    <rect x="238" y="221" width="20" height="18" rx="4" fill="#fbbf24" stroke="#b45309"/>
+    <circle cx="256" cy="230" r="2.6" fill="#111827"/>
+    <text x="230" y="234.5" font-size="11.5" fill="#e2e8f0" text-anchor="end">3V3</text>
+
+    <rect x="238" y="259" width="20" height="18" rx="4" fill="#fbbf24" stroke="#b45309"/>
+    <circle cx="256" cy="268" r="2.6" fill="#111827"/>
+    <text x="230" y="272.5" font-size="11.5" fill="#e2e8f0" text-anchor="end">GND</text>
+
+    <rect x="238" y="297" width="20" height="18" rx="4" fill="#fbbf24" stroke="#b45309"/>
+    <circle cx="256" cy="306" r="2.6" fill="#111827"/>
+    <text x="230" y="310.5" font-size="11.5" fill="#e2e8f0" text-anchor="end">IO4</text>
+
+    <rect x="238" y="335" width="20" height="18" rx="4" fill="#fbbf24" stroke="#b45309"/>
+    <circle cx="256" cy="344" r="2.6" fill="#111827"/>
+    <text x="230" y="348.5" font-size="11.5" fill="#e2e8f0" text-anchor="end">IO5</text>
+  </g>
+
+  <!-- ==================== OLED ==================== -->
+  <rect x="434" y="92" width="206" height="286" rx="15" fill="#0b1220" stroke="#1e293b" stroke-width="1.2"/>
+
+  <text x="452" y="128" font-size="14" font-weight="700" fill="#f8fafc">OLED 0.96″</text>
+  <text x="452" y="145" font-size="9.5" fill="#94a3b8">SSD1306 · 128×64 · I2C</text>
+
+  <!-- 屏幕 -->
+  <rect x="470" y="158" width="140" height="68" rx="3" fill="#060b16" stroke="#2b3648"/>
+  <g fill="#16202f">
+    <rect x="478" y="170" width="124" height="6" rx="1"/>
+    <rect x="478" y="186" width="124" height="6" rx="1"/>
+    <rect x="478" y="202" width="84" height="6" rx="1"/>
+  </g>
+  <text x="602" y="220" font-size="6.5" fill="#3b4759" text-anchor="end">128×64</text>
+
+  <text x="498" y="252" font-size="8" fill="#64748b">丝印 SDA/SDI 同一根</text>
+  <text x="498" y="270" font-size="8" fill="#64748b">丝印 SCL/SCK 同一根</text>
+
+  <!-- 引脚（左缘） -->
+  <g>
+    <rect x="424" y="221" width="20" height="18" rx="4" fill="#fbbf24" stroke="#b45309"/>
+    <circle cx="426" cy="230" r="2.6" fill="#0b1220"/>
+    <text x="452" y="234.5" font-size="11.5" fill="#e2e8f0">VCC</text>
+
+    <rect x="424" y="259" width="20" height="18" rx="4" fill="#fbbf24" stroke="#b45309"/>
+    <circle cx="426" cy="268" r="2.6" fill="#0b1220"/>
+    <text x="452" y="272.5" font-size="11.5" fill="#e2e8f0">GND</text>
+
+    <rect x="424" y="297" width="20" height="18" rx="4" fill="#fbbf24" stroke="#b45309"/>
+    <circle cx="426" cy="306" r="2.6" fill="#0b1220"/>
+    <text x="452" y="310.5" font-size="11.5" fill="#e2e8f0">SDA</text>
+
+    <rect x="424" y="335" width="20" height="18" rx="4" fill="#fbbf24" stroke="#b45309"/>
+    <circle cx="426" cy="344" r="2.6" fill="#0b1220"/>
+    <text x="452" y="348.5" font-size="11.5" fill="#e2e8f0">SCL</text>
+  </g>
+
+  <text x="452" y="366" font-size="8.5" fill="#64748b">认准 I2C 4 针版，7 针 SPI 版接线不同</text>
+
+  <!-- ==================== 连线 ==================== -->
+  <g stroke-linecap="round">
+    <line x1="258" y1="230" x2="424" y2="230" stroke="#ef4444" stroke-width="3.4"/>
+    <line x1="258" y1="268" x2="424" y2="268" stroke="#334155" stroke-width="3.4"/>
+    <line x1="258" y1="306" x2="424" y2="306" stroke="#2563eb" stroke-width="3.4"/>
+    <line x1="258" y1="344" x2="424" y2="344" stroke="#f59e0b" stroke-width="3.4"/>
+  </g>
+
+  <!-- 线缆标签 -->
+  <g font-size="10.5" font-weight="600" fill="#334155" text-anchor="middle">
+    <rect x="303" y="219" width="76" height="22" rx="11" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="341" y="234">3V3 → VCC</text>
+
+    <rect x="316" y="257" width="50" height="22" rx="11" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="341" y="272">GND</text>
+
+    <rect x="305" y="295" width="72" height="22" rx="11" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="341" y="310">IO4 · SDA</text>
+
+    <rect x="305" y="333" width="72" height="22" rx="11" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="341" y="348">IO5 · SCL</text>
+  </g>
+
+  <g font-size="7.5" fill="#94a3b8" text-anchor="middle">
+    <text x="341" y="209">红</text>
+    <text x="341" y="247">黑</text>
+    <text x="341" y="285">蓝</text>
+    <text x="341" y="323">黄</text>
+  </g>
+
+  <!-- ==================== 备注 ==================== -->
+  <rect x="40" y="392" width="600" height="148" rx="13" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="58" y="408" width="3" height="13" rx="1.5" fill="#2563eb"/>
+  <text x="70" y="419" font-size="12.5" font-weight="700" fill="#0f172a">接线要点 · C3 的引脚和 WROOM-32 完全不是一回事</text>
+
+  <g font-size="10.5" fill="#475569">
+    <g fill="#94a3b8">
+      <circle cx="64" cy="439" r="2"/>
+      <circle cx="64" cy="461" r="2"/>
+      <circle cx="64" cy="483" r="2"/>
+      <circle cx="64" cy="505" r="2"/>
+      <circle cx="64" cy="527" r="2"/>
+    </g>
+
+    <text x="74" y="443">VCC 接 <tspan font-weight="700" fill="#b45309">3V3</tspan>，别接 5V —— 接反必烧屏；3V3 是板上 LDO 输出，带一块 OLED 够用</text>
+    <text x="74" y="465">SDA = <tspan font-weight="700" fill="#1d4ed8">IO4</tspan>，SCL = <tspan font-weight="700" fill="#b45309">IO5</tspan>：相邻、无 strapping，比默认的 IO8/IO9 稳得多</text>
+    <text x="74" y="487"><tspan font-weight="700" fill="#b91c1c">别用 IO8 / IO9 跑 I2C</tspan>：IO8 是板载 LED 且复位时须为高，IO9 就是 BOOT 键</text>
+    <text x="74" y="509">IO2 也是 strapping；IO18/IO19 是 USB；IO20/IO21 是串口 —— 这几个都别占用</text>
+    <text x="74" y="531">翻页直接用板载 BOOT 键（IO9），不用外接按钮；烧录和看串口也靠它</text>
+  </g>
+
+  <!-- 页脚 -->
+  <text x="40" y="558" font-size="9" fill="#94a3b8">断电后接线 · 上电前复查 VCC / GND</text>
+  <text x="640" y="558" font-size="9" fill="#94a3b8" text-anchor="end">ESP32 Server Monitor · wiring-c3</text>
+</svg>
