@@ -38,9 +38,17 @@
 // 注意：开机瞬间按住 BOOT 会进入下载模式，正常使用没有影响。
 #define ENABLE_BUTTON  1
 
-// ---------- 时序 ----------
-#define WIFI_CONNECT_TIMEOUT_MS 20000   // 开机等 WiFi 的最长时间
+// ---------- WiFi / 配网 ----------
+// 首次或凭据失效时设备开热点，手机连上后浏览器打开 192.168.4.1 填写
+#define WIFI_AP_NAME            "ESP32-Monitor"
+#define WIFI_AP_PASSWORD        "12345678"  // 至少 8 位；开放热点部分手机会隐藏
+#define WIFI_AP_CHANNEL         6           // SoftAP 信道（1/6/11）
+#define WIFI_CONNECT_TIMEOUT_MS 12000   // 开机用已存凭据连接的最长时间
+#define WIFI_PORTAL_TIMEOUT_S   300     // 配置门户最长等待（秒）
 #define WIFI_RETRY_MS           10000   // 掉线后重连间隔
+#define CONFIG_RESET_HOLD_MS    3000    // 长按 BOOT 清除 WiFi/服务器配置并进入配网
+
+// ---------- 时序 ----------
 #define HTTP_TIMEOUT_MS         2500    // 单次请求超时
 #define FETCH_INTERVAL_MS       5000    // 拉取服务器指标间隔
 #define RENDER_INTERVAL_MS      400     // 屏幕刷新间隔（仪表条动画）
